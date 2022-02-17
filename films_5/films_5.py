@@ -1,4 +1,5 @@
 import random
+from datetime import date
 
 class Films:
     list_of_films = []
@@ -10,6 +11,8 @@ class Films:
         self.list_of_films.append(self)
     def __str__(self):
         return f'"{self.title}" ({self.year})'
+    def __repr__(self):
+        return self.__str__()
     def play(self, step = 1):
         self.number += step  
 
@@ -22,8 +25,14 @@ class Series(Films):
         self.list_of_series.append(self)
     def __str__(self):
         return (f'"{self.title:}" S{self.season:02d}E{self.episode:02d}')
+    def __repr__(self):
+        return self.__str__()
     def play(self, step = 1):
         self.number += step
+    def get_number(self, number):
+        self.number = number
+        return number
+
 
 film_1 = Films(title="Rambo 3", year="1989", genre="action", number=4)
 film_2 = Films(title="Dune", year="2021", genre="asci-fi", number=5)
@@ -70,4 +79,15 @@ def top_titles(x):
     new_list = sorted(list(d.items()), reverse=True)
     print(new_list[:x])
 
-get_movies()
+def new_series(a_title, a_year, a_genre, a_number, an_episode, a_season):
+    series_x = Series(title=a_title, year=a_year, genre=a_genre, number=a_number, episode=an_episode, season=a_season)
+    for x in range(1):
+        list_simple.append(series_x)
+
+today = date.today()
+current_data = today.strftime("%d/%m/%Y")
+print("Biblioteka filmów")
+print(list_simple)
+generate_views()
+print(f"Najpopularniejsze filmy i seriale w dniu {current_data}:")
+top_titles(3)

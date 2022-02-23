@@ -81,8 +81,6 @@ def top_titles(x):
 
 def new_series(a_title, a_year, a_genre, a_number, an_episode, a_season):
     series_x = Series(title=a_title, year=a_year, genre=a_genre, number=a_number, episode=an_episode, season=a_season)
-    for x in range(1):
-        list_simple.append(series_x)
 
 today = date.today()
 current_data = today.strftime("%d/%m/%Y")
